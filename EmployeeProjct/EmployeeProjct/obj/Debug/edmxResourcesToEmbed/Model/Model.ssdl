@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmployeesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="EmployeeData">
+    <Key>
+      <PropertyRef Name="IdNumber" />
+    </Key>
+    <Property Name="Id" Type="int" />
+    <Property Name="IdType" Type="varchar(max)" />
+    <Property Name="IdNumber" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MartialStatus" Type="varchar(max)" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="Contact" Type="varchar(max)" />
+    <Property Name="Home" Type="varchar(max)" />
+    <Property Name="Email" Type="varchar(max)" />
+    <Property Name="Address" Type="varchar(max)" />
+    <Property Name="PinCode" Type="int" />
+    <Property Name="State" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="SignUp">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FName" Type="varchar(max)" />
+    <Property Name="LName" Type="varchar(max)" />
+    <Property Name="UserName" Type="varchar(max)" />
+    <Property Name="email" Type="varchar(max)" />
+    <Property Name="PassWord" Type="varchar(max)" />
+  </EntityType>
+  <Association Name="FK__EmployeeData__Id__4D94879B">
+    <End Role="SignUp" Type="Self.SignUp" Multiplicity="0..1" />
+    <End Role="EmployeeData" Type="Self.EmployeeData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SignUp">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeData">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EmployeesModelStoreContainer">
+    <EntitySet Name="EmployeeData" EntityType="Self.EmployeeData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SignUp" EntityType="Self.SignUp" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__EmployeeData__Id__4D94879B" Association="Self.FK__EmployeeData__Id__4D94879B">
+      <End Role="SignUp" EntitySet="SignUp" />
+      <End Role="EmployeeData" EntitySet="EmployeeData" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

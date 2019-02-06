@@ -12,37 +12,38 @@
         <link rel="stylesheet" href="css/LoginPage.css">
         <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
                 crossorigin="anonymous"></script>
-        
+
         <script>
 
-              function hello(){
-            var fname= document.getElementById("fname").value;
-            var lname= document.getElementById("lname").value;
-            var uname= document.getElementById("uname").value;
-            var email= document.getElementById("email").value;
-            var pwd= document.getElementById("pwd").value;
+            function hello(){
+                var fname= document.getElementById("fname").value;
+                var lname= document.getElementById("lname").value;
+                var uname= document.getElementById("uname").value;
+                var email= document.getElementById("email").value;
+                var pwd= document.getElementById("pwd").value;
 
-            var dataToSend={
-                "FirstName": fname,
-                "LastName": lname,
-                "UserName": uname,
-                "PassWord": pwd               
-            }
-            
-            
-            $.ajax({
-                url:"http://localhost:61393/api/SignUps",
-                data: dataToSend,
-                type:'post',
-                dataType:'json',
-                success:function(res){
-                    console.log(res);
-                    alert("acc has been created");
+                var dataToSend={
+                    "FName": fname,
+                    "LName": lname,
+                    "UserName": uname,
+                    "email": email,
+                    "PassWord": pwd
                 }
 
-            });
 
-              }
+                $.ajax({
+                    url:"http://localhost:50953/api/SignUps",
+                    data: dataToSend,
+                    type:'post',
+                    dataType:'json',
+                    success:function(res){
+                        console.log(res);
+                        alert("acc has been created");
+                    }
+
+                });
+
+            }
         </script>
 
         <title>Cyber Group</title>

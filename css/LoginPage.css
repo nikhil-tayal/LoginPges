@@ -58,6 +58,10 @@ a.signuplink:hover{
 }
 input[type="submit"]{
     border-radius: 20px;
+    width: 30%;
+    margin-right: 3%;
+    margin-top: 7%;
+    margin-bottom: 10%;
 }
 .footer-part {
     text-align: center;
